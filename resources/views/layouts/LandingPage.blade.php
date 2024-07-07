@@ -21,8 +21,6 @@
   </head>
 
   <body>
-      @include('components.Header')
-
       @yield('konten')
 
       @include('components.Footer')
