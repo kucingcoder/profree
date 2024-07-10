@@ -22,9 +22,7 @@ Profree - Kemampuan
                     <td><strong>{{ $item->produk }}</strong></td>
                     <td>{{ $item->bahasa }}</td>
                     <td>
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-danger"><i class="bx bx-trash" onclick="Hapus('{{ $item->id }}')">Hapus</i></button>
-                        </div>
+                        <button class="btn btn-danger"><i class="bx bx-trash" onclick="Hapus('{{ $item->id }}')">Hapus</i></button>
                     </td>
                 </tr>
                 @endforeach

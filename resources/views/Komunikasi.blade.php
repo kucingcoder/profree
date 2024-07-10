@@ -20,9 +20,7 @@ Profree - Bahasa Komunikasi
                 <tr>
                     <td><strong>{{ $item->bahasa }}</strong></td>
                     <td>
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-danger"><i class="bx bx-trash" onclick="Hapus('{{ $item->id }}')">Hapus</i></button>
-                        </div>
+                        <button class="btn btn-danger"><i class="bx bx-trash" onclick="Hapus('{{ $item->id }}')">Hapus</i></button>
                     </td>
                 </tr>
                 @endforeach

@@ -22,9 +22,7 @@ Profree - Platform
                     <td><strong>{{ $item->nama }}</strong></td>
                     <td><a href="{{ $item->profil }}" target="_blank">{{ $item->profil }}</a></td>
                     <td>
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-danger"><i class="bx bx-trash" onclick="Hapus('{{ $item->id }}')">Hapus</i></button>
-                        </div>
+                        <button class="btn btn-danger"><i class="bx bx-trash" onclick="Hapus('{{ $item->id }}')">Hapus</i></button>
                     </td>
                 </tr>
                 @endforeach
