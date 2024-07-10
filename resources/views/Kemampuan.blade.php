@@ -1,24 +1,26 @@
 @extends('layouts.User')
 
 @section('judul')
-Profree - Bahasa Komunikasi
+Profree - Kemampuan
 @endsection
 
 @section('konten')
 <div class="card">
-    <h5 class="card-header">Bahasa komunikasi anda</h5>
+    <h5 class="card-header">Kemampuan anda</h5>
     <div class="table-responsive text-nowrap">
         <table class="table">
             <thead>
                 <tr>
-                    <th>Bahasa</th>
+                    <th>Produk</th>
+                    <th>Bahasa Pemograman</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody class="table-border-bottom-0">
-                @foreach($bicara as $item)
+                @foreach($skill as $item)
                 <tr>
-                    <td><strong>{{ $item->bahasa }}</strong></td>
+                    <td><strong>{{ $item->produk }}</strong></td>
+                    <td>{{ $item->bahasa }}</td>
                     <td>
                         <div class="d-flex gap-2">
                             <button class="btn btn-danger"><i class="bx bx-trash" onclick="Hapus('{{ $item->id }}')">Hapus</i></button>
@@ -34,11 +36,25 @@ Profree - Bahasa Komunikasi
 <div class="col-xl mt-4">
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Tambah bahasa komunikasi</h5>
+            <h5 class="mb-0">Tambah Kemampuan</h5>
         </div>
         <div class="card-body">
-            <form action="/bahasa-komunikasi/tambah" method="post">
+            <form action="/kemampuan/tambah" method="post">
                 @csrf
+                <div class="mb-3">
+                    <label class="form-label" for="produk">Produk</label>
+                    <div class="input-group input-group-merge">
+                        <span class="input-group-text"><i class="bx bx-globe"></i></span>
+                        <select name="produk" id="produk" class="form-control">
+                            <option value="0" selected disabled>Pilih...</option>
+                            <?php $index = 1; ?>
+                            @foreach($produk as $item)
+                            <option value="<?= $index ?>">{{ $item->nama }}</option>
+                            <?php $index++; ?>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
                 <div class="mb-3">
                     <label class="form-label" for="bahasa">Bahasa</label>
                     <div class="input-group input-group-merge">
@@ -47,7 +63,7 @@ Profree - Bahasa Komunikasi
                             <option value="0" selected disabled>Pilih...</option>
                             <?php $index = 1; ?>
                             @foreach($bahasa as $item)
-                            <option value="<?= $index ?>">{{ $item->bahasa }}</option>
+                            <option value="<?= $index ?>">{{ $item->nama }}</option>
                             <?php $index++; ?>
                             @endforeach
                         </select>
@@ -64,7 +80,7 @@ Profree - Bahasa Komunikasi
     function Hapus(id) {
         var result = confirm("Apakah anda yakin ingin menghapus ini?");
         if (result) {
-            window.location.href = 'http://localhost:9090/bahasa-komunikasi/hapus/' + id;
+            window.location.href = 'http://localhost:9090/kemampuan/hapus/' + id;
         }
     }
 </script>
