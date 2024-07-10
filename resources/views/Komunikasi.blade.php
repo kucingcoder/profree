@@ -20,7 +20,7 @@ Profree - Bahasa Komunikasi
                 <tr>
                     <td><strong>{{ $item->bahasa }}</strong></td>
                     <td>
-                        <button class="btn btn-danger"><i class="bx bx-trash" onclick="Hapus('{{ $item->id }}')">Hapus</i></button>
+                        <button class="btn btn-danger" onclick="Hapus('{{ $item->id }}')"><i class="bx bx-trash">Hapus</i></button>
                     </td>
                 </tr>
                 @endforeach
