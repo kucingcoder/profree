@@ -38,13 +38,15 @@ class Otentikas extends Controller
 
         $konfirmasi = new KonfirmasiEmail;
 
-        $konfirmasi->kode = md5(date('Y-m-d H:i:s'));
+        $kode = md5(date('Y-m-d H:i:s'));
+
+        $konfirmasi->kode = $kode;
         $konfirmasi->pengguna_id = $pengguna->id;
         $konfirmasi->save();
 
-        Mail::to($request->email)->send(new EmailAktivasi($pengguna));
+        Mail::to($request->email)->send(new EmailAktivasi($kode));
 
-        return redirect("/aktivasi");
+        return view("AkunTidakAktif", ["email" => $request->email]);
     }
 
     public function Masuk(Request $request)
@@ -53,9 +55,10 @@ class Otentikas extends Controller
 
         if ($pengguna) {
             if ($pengguna->status_akun_id == 1) {
-                return redirect("/aktivasi");
+                return view("AkunTidakAktif", ["email" => $request->email]);
             } else {
                 $request->session()->put("id", $pengguna->id);
+                $request->session()->put("nama", $pengguna->nama);
                 return redirect("/dashboard");
             }
         } else {
@@ -79,9 +82,10 @@ class Otentikas extends Controller
 
             if ($email) {
                 if ($email->status_akun_id == 1) {
-                    return redirect("/aktivasi");
+                    return view("AkunTidakAktif", ["email" => $google->getEmail()]);
                 } else {
                     $request->session()->put("id", $email->id);
+                    $request->session()->put("nama", $email->nama);
                     return redirect("/dashboard");
                 }
             }
@@ -96,13 +100,14 @@ class Otentikas extends Controller
 
             $konfirmasi = new KonfirmasiEmail;
 
-            $konfirmasi->kode = md5(date('Y-m-d H:i:s'));
+            $kode = md5(date('Y-m-d H:i:s'));
+            $konfirmasi->kode = $kode;
             $konfirmasi->pengguna_id = $pengguna->id;
             $konfirmasi->save();
 
-            Mail::to($google->getEmail())->send(new EmailAktivasi($pengguna));
+            Mail::to($google->getEmail())->send(new EmailAktivasi($kode));
 
-            return redirect("/aktivasi");
+            return view("AkunTidakAktif", ["email" => $google->getEmail()]);
         } catch (\Throwable $th) {
             log::info("Kesalahan : " . $th);
 
@@ -112,56 +117,13 @@ class Otentikas extends Controller
         }
     }
 
-    public function AksesGithub()
+    public function KirimUlangKonfirmasi($email)
     {
-        return Socialite::driver('github')->redirect();
-    }
-
-    public function AkunGithub(Request $request)
-    {
-        try {
-            $github = Socialite::driver('github')->user();
-
-            $email = Pengguna::where("email", "=", $github->getEmail())->first();
-
-            if ($email) {
-                if ($email->status_akun_id == 1) {
-                    return redirect("/aktivasi");
-                } else {
-                    $request->session()->put("id", $email->id);
-                    return redirect("/dashboard");
-                }
-            }
-
-            $pengguna = new Pengguna;
-            $pengguna->nama = $github->getName();
-            $pengguna->jenis_kelamin_id = 1;
-            $pengguna->jenis_akun_id = 1;
-            $pengguna->email = $github->getEmail();
-            $pengguna->sandi = md5(date('Y-m-d H:i:s'));
-            $pengguna->save();
-
-            $konfirmasi = new KonfirmasiEmail;
-
-            $konfirmasi->kode = md5(date('Y-m-d H:i:s'));
-            $konfirmasi->pengguna_id = $pengguna->id;
-            $konfirmasi->save();
-
-            Mail::to($github->getEmail())->send(new EmailAktivasi($pengguna));
-
-            return redirect("/aktivasi");
-        } catch (\Throwable $th) {
-            log::info("Kesalahan : " . $th);
-
-            return redirect("/daftar")
-                ->withInput()
-                ->withErrors(["gagal-daftar" => "Tidak dapat info dari github",]);
-        }
     }
 
     public function KonfirmasiEmail($Kode, Request $request)
     {
-        $konfirmasi = KonfirmasiEmail::where('kode', $Kode)->pluck('pengguna_id')->first();
+        $konfirmasi = KonfirmasiEmail::where('kode', $Kode)->first();
 
         if ($konfirmasi) {
             KonfirmasiEmail::where('pengguna_id', $konfirmasi)->delete();
@@ -172,10 +134,11 @@ class Otentikas extends Controller
                 $pengguna->save();
             }
 
-            $request->session()->put("id", $konfirmasi);
+            $request->session()->put("id", $konfirmasi->id);
+            $request->session()->put("nama", $konfirmasi->nama);
             return redirect("/dashboard");
         } else {
-            return redirect("/aktivasi");
+            abort(404);
         }
     }
 
