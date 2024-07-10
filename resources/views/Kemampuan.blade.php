@@ -80,7 +80,7 @@ Profree - Kemampuan
     function Hapus(id) {
         var result = confirm("Apakah anda yakin ingin menghapus ini?");
         if (result) {
-            window.location.href = 'http://localhost:9090/kemampuan/hapus/' + id;
+            window.location.href = 'https://serverku.my.id/kemampuan/hapus/' + id;
         }
     }
 </script>

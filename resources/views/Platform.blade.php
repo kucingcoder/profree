@@ -73,7 +73,7 @@ Profree - Platform
     function Hapus(id) {
         var result = confirm("Apakah anda yakin ingin menghapus ini?");
         if (result) {
-            window.location.href = 'http://localhost:9090/platform/hapus/' + id;
+            window.location.href = 'https://serverku.my.id/platform/hapus/' + id;
         }
     }
 </script>
