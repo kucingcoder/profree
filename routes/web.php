@@ -7,6 +7,7 @@ use App\Http\Controllers\Otentikas;
 use App\Http\Controllers\Platform;
 use App\Http\Controllers\Profil;
 use App\Http\Controllers\Skills;
+use App\Http\Controllers\SPK;
 use App\Models\Komunikasi;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,8 @@ Route::view('/lupa-sandi', '');
 Route::get('/lupa-sandi/{Kode}', [Otentikas::class, 'LupaSandi']);
 Route::post('/atur-ulang-sandi', [Otentikas::class, 'AturUlangSandi']);
 
-Route::view('/dashboard', 'Dashboard');
+Route::get('/dashboard', [SPK::class, 'Index']);
+Route::post('/dashboard', [SPK::class, 'Hitung']);
 
 Route::get('/kemampuan', [Skills::class, 'Index']);
 Route::post('/kemampuan/tambah', [Skills::class, 'Tambah']);
