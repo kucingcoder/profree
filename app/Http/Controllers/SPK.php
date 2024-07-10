@@ -6,7 +6,6 @@ use App\Models\BahasaPemograman;
 use App\Models\JenisProduk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use PhpParser\Node\Expr\Cast\Double;
 
 class SPK extends Controller
 {
@@ -16,8 +15,22 @@ class SPK extends Controller
         $bahasa = BahasaPemograman::all();
 
         $data = [
+            "alternatif" => collect([]),
+            "perbandingan" => [],
+            "normalisasi" => [],
+            "bobot" => [],
             "produk" => $produk,
-            "bahasa" => $bahasa
+            "bahasa" => $bahasa,
+            "t" => 0,
+            "ci" => 0,
+            "ri" => 0,
+            "konsisten" => 0,
+            "c1" => [],
+            "c2" => [],
+            "c3" => [],
+            "c4" => [],
+            "perangkingan" => [],
+            "pengurutan" => [],
         ];
 
         return view("Dashboard", $data);

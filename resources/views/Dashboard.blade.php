@@ -104,7 +104,6 @@ Profree - Programer Terbaik
                                     </tr>
                                     @endforeach
                                     @endif
-
                                 </tbody>
                             </table>
                         </div>
