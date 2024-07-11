@@ -36,7 +36,7 @@ class Profil extends Controller
 
         $pengguna->update();
 
-        return redirect()->back();
+        return redirect()->back()->with("berhasil-update-profil", "Perubahan disimpan");
     }
 
     function UpdateRiwayat(Request $request)
@@ -53,7 +53,7 @@ class Profil extends Controller
 
     function UpdateSandi(Request $request)
     {
-        $pengguna = Pengguna::where("id", "=", $request->session()->get("id"))->where('sandi', md5($request->sandi_lama))->first();
+        $pengguna = Pengguna::where("id", "=", $request->session()->get("id"))->where("sandi", md5($request->sandi_lama))->first();
 
         if (empty($pengguna)) {
             return redirect()->back()->withInput()->withErrors(["gagal-ubah-sandi" => "Kata sandi lama salah",]);

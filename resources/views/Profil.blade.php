@@ -32,6 +32,18 @@ switch ($jenis_akun_id) {
 
 @section('konten')
 
+@if(session('berhasil-update-profil'))
+<div class="alert alert-success" role="alert">{{ session('berhasil-update-profil') }}</div>
+@endif
+
+@if(session('berhasil-update-riwayat'))
+<div class="alert alert-success" role="alert">{{ session('berhasil-update-riwayat') }}</div>
+@endif
+
+@if(session('berhasil-update-sandi'))
+<div class="alert alert-success" role="alert">{{ session('berhasil-update-sandi') }}</div>
+@endif
+
 @if ($errors->has('gagal-ubah-sandi'))
 <div class="alert alert-danger" role="alert">{{ $errors->first('gagal-ubah-sandi') }}</div>
 @endif
