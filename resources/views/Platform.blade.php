@@ -71,7 +71,7 @@ Profree - Platform
     function Hapus(id) {
         var result = confirm("Apakah anda yakin ingin menghapus ini?");
         if (result) {
-            window.location.href = '<?= url("/kemampuan/hapus") ?>/' + id;
+            window.location.href = '<?= url("/platform/hapus") ?>/' + id;
         }
     }
 </script>

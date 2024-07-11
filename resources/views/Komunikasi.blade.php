@@ -62,7 +62,7 @@ Profree - Bahasa Komunikasi
     function Hapus(id) {
         var result = confirm("Apakah anda yakin ingin menghapus ini?");
         if (result) {
-            window.location.href = '<?= url("/kemampuan/hapus") ?>/' + id;
+            window.location.href = '<?= url("/bahasa-komunikasi/hapus") ?>/' + id;
         }
     }
 </script>
