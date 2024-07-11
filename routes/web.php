@@ -24,7 +24,7 @@ Route::middleware('NonSesi')->group(
         Route::get('/oauth/google', [Otentikas::class, 'AksesGoogle']);
         Route::get('/oauth/google/callback', [Otentikas::class, 'AkunGoogle']);
 
-        Route::get('/aktivasi/{email}', Aktivasi::class, 'Index');
+        Route::get('/aktivasi/{email}', [Aktivasi::class, 'Index']);
 
         Route::get('/konfirmasi-email/{Kode}', [Otentikas::class, 'KonfirmasiEmail']);
 
