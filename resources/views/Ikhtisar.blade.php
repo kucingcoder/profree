@@ -14,8 +14,14 @@ Profree - Ikhtisar
     </div>
 
     <div class="position-absolute top-0 end-0 mt-4 me-4 d-flex gap-3" style="z-index: 1;">
-        <a href="masuk" class="btn btn-info">masuk</a>
-        <a href="daftar" class="btn btn-outline-info">daftar</a>
+        <?php
+        if (empty(session()->get("id"))) {
+            echo '<a href="masuk" class="btn btn-info">masuk</a>';
+            echo '<a href="daftar" class="btn btn-outline-info">daftar</a>';
+        } else {
+            echo '<a href="dashboard" class="btn btn-info">Dashboard</a>';
+        }
+        ?>
     </div>
     <div class="overlay position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(0, 0, 0, 0.8);"></div>
     <div class="vh-100 position-relative d-flex flex-column justify-content-center align-items-center text-center text-white">
