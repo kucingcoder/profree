@@ -80,14 +80,10 @@ class Otentikas extends Controller
 
             $email = Pengguna::where("email", "=", $google->getEmail())->first();
 
-            if ($email) {
-                if ($email->status_akun_id == 1) {
-                    return view("AkunTidakAktif", ["email" => $google->getEmail()]);
-                } else {
-                    $request->session()->put("id", $email->id);
-                    $request->session()->put("nama", $email->nama);
-                    return redirect("/dashboard");
-                }
+            if ($email & $email->status_akun_id == 1) {
+                $request->session()->put("id", $email->id);
+                $request->session()->put("nama", $email->nama);
+                return redirect("/dashboard");
             }
 
             $pengguna = new Pengguna;
