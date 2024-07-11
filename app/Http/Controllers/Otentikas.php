@@ -86,13 +86,15 @@ class Otentikas extends Controller
                 return redirect("/dashboard");
             }
 
-            $pengguna = new Pengguna;
-            $pengguna->nama = $google->getName();
-            $pengguna->jenis_kelamin_id = 1;
-            $pengguna->jenis_akun_id = 1;
-            $pengguna->email = $google->getEmail();
-            $pengguna->sandi = md5(date('Y-m-d H:i:s'));
-            $pengguna->save();
+            if (empty($email)) {
+                $pengguna = new Pengguna;
+                $pengguna->nama = $google->getName();
+                $pengguna->jenis_kelamin_id = 1;
+                $pengguna->jenis_akun_id = 1;
+                $pengguna->email = $google->getEmail();
+                $pengguna->sandi = md5(date('Y-m-d H:i:s'));
+                $pengguna->save();
+            }
 
             $konfirmasi = new KonfirmasiEmail;
 
