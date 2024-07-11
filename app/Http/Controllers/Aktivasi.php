@@ -6,6 +6,6 @@ class Aktivasi extends Controller
 {
     function Index($email)
     {
-        return view("AkunTidakAktif" . ["email" => $email]);
+        return view("AkunTidakAktif", ["email" => $email]);
     }
 }
