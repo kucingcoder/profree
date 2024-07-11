@@ -14,6 +14,7 @@ class Profil extends Controller
         $data = [
             "nama" => $pengguna->nama,
             "jenis_kelamin_id" => $pengguna->jenis_kelamin_id,
+            "jenis_akun_id" => $pengguna->jenis_akun_id,
             "domisili" => $pengguna->domisili,
             "email" => $pengguna->email,
             "jumlah_projek" => $pengguna->projek,
@@ -29,6 +30,7 @@ class Profil extends Controller
 
         $pengguna->nama = $request->nama;
         $pengguna->jenis_kelamin_id = $request->jenis_kelamin;
+        $pengguna->jenis_akun_id = $request->jenis_akun;
         $pengguna->domisili = $request->domisili;
         $pengguna->email = $request->email;
 

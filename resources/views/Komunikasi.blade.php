@@ -41,8 +41,7 @@ Profree - Bahasa Komunikasi
                     <label class="form-label" for="bahasa">Bahasa</label>
                     <div class="input-group input-group-merge">
                         <span class="input-group-text"><i class="bx bx-flag"></i></span>
-                        <select name="bahasa" id="bahasa" class="form-control">
-                            <option value="0" selected disabled>Pilih...</option>
+                        <select name="bahasa" id="bahasa" class="form-control" required>
                             <?php $index = 1; ?>
                             @foreach($bahasa as $item)
                             <option value="<?= $index ?>">{{ $item->bahasa }}</option>

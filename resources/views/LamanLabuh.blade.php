@@ -16,7 +16,7 @@ Profree - Laman Labuh
                 @csrf
                 <div class="mb-3">
                     <div class="input-group input-group-merge">
-                        <textarea rows="13" type="password" class="form-control" id="deskripsi" name="deskripsi" placeholder="# Head1" aria-label="John Doe" aria-describedby="basic-icon-default-fullname2"><?= $deskripsi ?></textarea>
+                        <textarea rows="13" type="password" class="form-control" id="deskripsi" name="deskripsi" placeholder="# Head1" aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" required><?= $deskripsi ?></textarea>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Simpan</button>

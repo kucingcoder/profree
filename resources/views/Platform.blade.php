@@ -43,8 +43,7 @@ Profree - Platform
                     <label class="form-label" for="website">Website</label>
                     <div class="input-group input-group-merge">
                         <span class="input-group-text"><i class="bx bx-home-alt"></i></span>
-                        <select name="website" id="website" class="form-control">
-                            <option value="0" selected disabled>Pilih...</option>
+                        <select name="website" id="website" class="form-control" required>
                             <?php $index = 1; ?>
                             @foreach($website as $item)
                             <option value="<?= $index ?>">{{ $item->nama }}</option>
@@ -57,7 +56,7 @@ Profree - Platform
                     <label class="form-label" for="profil">Link Profil</label>
                     <div class="input-group input-group-merge">
                         <span class="input-group-text"><i class="bx bx-globe"></i></span>
-                        <input type="text" id="profil" name="profil" class="form-control" placeholder="https://..." aria-label="john.doe" aria-describedby="basic-icon-default-email2" />
+                        <input type="text" id="profil" name="profil" class="form-control" placeholder="https://..." aria-label="john.doe" aria-describedby="basic-icon-default-email2" required />
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Tambah</button>
