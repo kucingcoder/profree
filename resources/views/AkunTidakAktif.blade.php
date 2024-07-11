@@ -45,7 +45,7 @@ Profree - Belum Aktif
             if (secondsLeft <= 0) {
                 clearInterval(countdownInterval);
                 countdownElement.remove();
-                button.removeAttribute("tombol");
+                button.removeAttribute("disabled");
             }
         }, 1000);
     });
