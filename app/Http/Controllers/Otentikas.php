@@ -146,8 +146,8 @@ class Otentikas extends Controller
                 $pengguna->save();
             }
 
-            $request->session()->put("id", $konfirmasi->id);
-            $request->session()->put("nama", $konfirmasi->nama);
+            $request->session()->put("id", $pengguna->id);
+            $request->session()->put("nama", $pengguna->nama);
             return redirect("/dashboard");
         } else {
             abort(404);
