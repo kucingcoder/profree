@@ -22,7 +22,7 @@ Profree - Belum Aktif
                             </div>
                             <h4 class="mb-2">Akun-mu Belum Aktif</h4>
                             <p class="mb-4">cek inbox email, jika tidak ada periksa spam atau klik link dibawah</p>
-                            <button id="tombol" class="btn btn-primary" disabled onclick='window.location.href = "<?= url("/aktivasi/kirim-ulang/" . $email) ?>";'>Kirim Ulang Link Aktivasi</button>
+                            <button id="tombol" class="btn btn-secondary" disabled onclick='window.location.href = "<?= url("/aktivasi/kirim-ulang/" . $email) ?>";'>Kirim Ulang Link Aktivasi</button>
                             <p id="countdown" class="mt-2">anda dapat mengirim ulang dalam 60 detik</p>
                         </div>
                     </div>
@@ -45,7 +45,9 @@ Profree - Belum Aktif
             if (secondsLeft <= 0) {
                 clearInterval(countdownInterval);
                 countdownElement.remove();
+                button.classList.remove("btn-secondary")
                 button.removeAttribute("disabled");
+                button.classList.add("btn-primary");
             }
         }, 1000);
     });
