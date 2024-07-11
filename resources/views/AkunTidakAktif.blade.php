@@ -22,7 +22,7 @@ Profree - Belum Aktif
                             </div>
                             <h4 class="mb-2">Akun-mu Belum Aktif</h4>
                             <p class="mb-4">cek inbox email, jika tidak ada periksa spam atau klik link dibawah</p>
-                            <a href="<?= url("/kirim-ulang-konfirmasi/" . $email) ?>" class="btn btn-primary d-grid w-100">Kirim Ulang Link Aktivasi</a>
+                            <a href="<?= url("/aktivasi/" . $email) ?>" class="btn btn-primary d-grid w-100">Kirim Ulang Link Aktivasi</a>
                         </div>
                     </div>
                 </div>
