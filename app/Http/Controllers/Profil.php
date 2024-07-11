@@ -63,6 +63,6 @@ class Profil extends Controller
 
         $pengguna->update();
 
-        return redirect()->back()->with("berhasil-update-sandi", "sandi berhasil diubah");
+        return redirect()->back()->with("berhasil-update-sandi", "Sandi berhasil diubah");
     }
 }
