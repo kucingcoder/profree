@@ -138,9 +138,9 @@ class Otentikas extends Controller
         $konfirmasi = KonfirmasiEmail::where('kode', $Kode)->first();
 
         if ($konfirmasi) {
-            KonfirmasiEmail::where('pengguna_id', $konfirmasi)->delete();
+            KonfirmasiEmail::where('pengguna_id', $konfirmasi->pengguna_id)->delete();
 
-            $pengguna = Pengguna::where('id', $konfirmasi)->first();
+            $pengguna = Pengguna::where('id', $konfirmasi->pengguna_id)->first();
             if ($pengguna) {
                 $pengguna->status_akun_id = 2;
                 $pengguna->save();
