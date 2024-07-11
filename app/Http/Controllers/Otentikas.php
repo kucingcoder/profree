@@ -80,7 +80,7 @@ class Otentikas extends Controller
 
             $email = Pengguna::where("email", "=", $google->getEmail())->first();
 
-            if ($email & $email->status_akun_id == 1) {
+            if ($email && $email->status_akun_id == 1) {
                 $request->session()->put("id", $email->id);
                 $request->session()->put("nama", $email->nama);
                 return redirect("/dashboard");
