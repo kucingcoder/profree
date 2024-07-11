@@ -5,6 +5,10 @@ Profree - Laman Labuh
 @endsection
 
 @section('konten')
+@if(session('berhasil-update-readme'))
+<div class="alert alert-success" role="alert">{{ session('berhasil-update-readme') }}</div>
+@endif
+
 <div class="col-xl">
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">

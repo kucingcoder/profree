@@ -26,6 +26,6 @@ class LamanLabuh extends Controller
 
         $pengguna->update();
 
-        return redirect()->back();
+        return redirect()->back()->with("berhasil-update-readme", "Perubahan laman labuh disimpan");
     }
 }
