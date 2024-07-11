@@ -22,7 +22,8 @@ Profree - Belum Aktif
                             </div>
                             <h4 class="mb-2">Akun-mu Belum Aktif</h4>
                             <p class="mb-4">cek inbox email, jika tidak ada periksa spam atau klik link dibawah</p>
-                            <a href="<?= url("/aktivasi/kirim-ulang/" . $email) ?>" class="btn btn-primary d-grid w-100">Kirim Ulang Link Aktivasi</a>
+                            <a id="link" href="<?= url("/aktivasi/kirim-ulang/" . $email) ?>" class="btn btn-primary d-grid w-100">Kirim Ulang Link Aktivasi</a>
+                            <p id="countdown">anda dapat mengirim ulang dalam 60 detik</p>
                         </div>
                     </div>
                 </div>
@@ -30,4 +31,23 @@ Profree - Belum Aktif
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(function() {
+            const countdownElement = document.getElementById("countdown");
+            let secondsLeft = 60;
+
+            const countdownInterval = setInterval(function() {
+                secondsLeft--;
+                countdownElement.textContent = `anda dapat mengirim ulang dalam ${secondsLeft} detik`;
+
+                if (secondsLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.textContent = 'Waktu telah habis';
+                }
+            }, 1000);
+        }, 60000);
+    });
+</script>
 @endsection
