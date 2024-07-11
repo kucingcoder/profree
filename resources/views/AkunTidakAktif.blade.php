@@ -15,15 +15,15 @@ Profree - Belum Aktif
                             <div class="app-brand justify-content-center">
                                 <a href="index.html" class="app-brand-link gap-2">
                                     <span class="app-brand-logo demo">
-                                        <img src="assets/img/icons/brands/profree.svg" style="width: 64px;" alt="Logo">
+                                        <img src='<?= url("assets/img/icons/brands/profree.svg") ?>' style="width: 64px;" alt="Logo">
                                     </span>
                                     <span class="app-brand-text demo text-body fw-bolder">Profree</span>
                                 </a>
                             </div>
                             <h4 class="mb-2">Akun-mu Belum Aktif</h4>
                             <p class="mb-4">cek inbox email, jika tidak ada periksa spam atau klik link dibawah</p>
-                            <button id="tombol" disabled onclick='window.location.href = "<?= url("/aktivasi/kirim-ulang/" . $email) ?>";'>Kirim Ulang Link Aktivasi</button>
-                            <p id="countdown">anda dapat mengirim ulang dalam 60 detik</p>
+                            <button id="tombol" class="btn btn-primary" disabled onclick='window.location.href = "<?= url("/aktivasi/kirim-ulang/" . $email) ?>";'>Kirim Ulang Link Aktivasi</button>
+                            <p id="countdown" class="mt-2">anda dapat mengirim ulang dalam 60 detik</p>
                         </div>
                     </div>
                 </div>
