@@ -34,20 +34,18 @@ Profree - Belum Aktif
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        setTimeout(function() {
-            const countdownElement = document.getElementById("countdown");
-            let secondsLeft = 60;
+        const countdownElement = document.getElementById("countdown");
+        let secondsLeft = 60;
 
-            const countdownInterval = setInterval(function() {
-                secondsLeft--;
-                countdownElement.textContent = `anda dapat mengirim ulang dalam ${secondsLeft} detik`;
+        const countdownInterval = setInterval(function() {
+            secondsLeft--;
+            countdownElement.textContent = `anda dapat mengirim ulang dalam ${secondsLeft} detik`;
 
-                if (secondsLeft <= 0) {
-                    clearInterval(countdownInterval);
-                    countdownElement.textContent = 'Waktu telah habis';
-                }
-            }, 1000);
-        }, 60000);
+            if (secondsLeft <= 0) {
+                clearInterval(countdownInterval);
+                countdownElement.textContent = 'Waktu telah habis';
+            }
+        }, 1000);
     });
 </script>
 @endsection
