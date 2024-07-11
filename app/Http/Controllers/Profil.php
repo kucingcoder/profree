@@ -36,7 +36,7 @@ class Profil extends Controller
 
         $pengguna->update();
 
-        return redirect()->back()->with("berhasil-update-profil", "Perubahan disimpan");
+        return redirect()->back()->with("berhasil-update-profil", "Perubahan profil disimpan");
     }
 
     function UpdateRiwayat(Request $request)
@@ -48,7 +48,7 @@ class Profil extends Controller
 
         $pengguna->update();
 
-        return redirect()->back();
+        return redirect()->back()->with("berhasil-update-riwayat", "Perubahan riwayat disimpan");
     }
 
     function UpdateSandi(Request $request)
@@ -63,6 +63,6 @@ class Profil extends Controller
 
         $pengguna->update();
 
-        return redirect()->back();
+        return redirect()->back()->with("berhasil-update-sandi", "sandi berhasil diubah");
     }
 }
