@@ -29,7 +29,7 @@ Profree - Masuk
                         @csrf
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" placeholder="aku@gmail.com" />
+                            <input type="text" class="form-control" id="email" name="email" placeholder="aku@gmail.com" required />
                         </div>
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
@@ -39,7 +39,7 @@ Profree - Masuk
                                 </a>
                             </div>
                             <div class="input-group input-group-merge">
-                                <input type="password" id="sandi" class="form-control" name="sandi" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+                                <input type="password" id="sandi" class="form-control" name="sandi" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" required />
                                 <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                             </div>
                         </div>
@@ -48,16 +48,10 @@ Profree - Masuk
                             <button class="btn btn-primary d-grid w-100" type="submit">Masuk</button>
                         </div>
 
-                        <div class="d-flex gap-3 justify-content-center">
-                            <a href="oauth/google" class="btn btn-outline-danger d-flex align-items-center gap-2">
-                                <img src="assets/img/icons/brands/google.png" alt="Google" style="width: 16px;">
-                                <strong>Masuk dengan Google</strong>
-                            </a>
-                            <a href="oauth/github" class="btn btn-dark d-flex align-items-center gap-2">
-                                <img src="assets/img/icons/brands/github.png" alt="Google" style="width: 16px;">
-                                <strong>Masuk dengan Github</strong>
-                            </a>
-                        </div>
+                        <a href="oauth/google" class="btn btn-outline-danger d-flex align-items-center gap-2">
+                            <img src="assets/img/icons/brands/google.png" alt="Google" style="width: 16px;">
+                            <strong>Masuk dengan Google</strong>
+                        </a>
                     </form>
 
                     <p class="text-center">
