@@ -46,7 +46,7 @@ class Otentikas extends Controller
 
         Mail::to($request->email)->send(new EmailAktivasi($kode));
 
-        return view("AkunTidakAktif", ["email" => $request->email]);
+        return redirect("/aktivasi/" . $request->email);
     }
 
     public function Masuk(Request $request)
@@ -107,7 +107,7 @@ class Otentikas extends Controller
 
             Mail::to($google->getEmail())->send(new EmailAktivasi($kode));
 
-            return view("AkunTidakAktif", ["email" => $google->getEmail()]);
+            return redirect("/aktivasi/" . $google->getEmail());
         } catch (\Throwable $th) {
             log::info("Kesalahan : " . $th);
 
@@ -119,6 +119,18 @@ class Otentikas extends Controller
 
     public function KirimUlangKonfirmasi($email)
     {
+        $pengguna = Pengguna::where("email", "=", $email)->first();
+
+        $konfirmasi = new KonfirmasiEmail;
+
+        $kode = md5(date('Y-m-d H:i:s'));
+        $konfirmasi->kode = $kode;
+        $konfirmasi->pengguna_id = $pengguna->id;
+        $konfirmasi->save();
+
+        Mail::to($email)->send(new EmailAktivasi($kode));
+
+        return redirect("/aktivasi/" . $email);
     }
 
     public function KonfirmasiEmail($Kode, Request $request)

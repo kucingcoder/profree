@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Aktivasi;
 use App\Http\Controllers\Bicara;
 use App\Http\Controllers\Kantor;
 use App\Http\Controllers\LamanLabuh;
@@ -23,7 +24,7 @@ Route::middleware('NonSesi')->group(
         Route::get('/oauth/google', [Otentikas::class, 'AksesGoogle']);
         Route::get('/oauth/google/callback', [Otentikas::class, 'AkunGoogle']);
 
-        Route::view('/aktivasi', 'AkunTidakAktif');
+        Route::get('/aktivasi/{email}', Aktivasi::class, 'Index');
 
         Route::get('/konfirmasi-email/{Kode}', [Otentikas::class, 'KonfirmasiEmail']);
 
