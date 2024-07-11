@@ -310,7 +310,7 @@
                                     </tbody>
                                 </table>
                                 <p>Jika tidak merasa mendaftar atau membuat akun Profree abaikan saja email ini. Kemungkinan seseorang menggunakan email mu untuk tujuan tertentu.</p>
-                                <p>Good luck! Hope it works.</p>
+                                <p>Profree - SPK Programer Freelance Terbaik</p>
                             </td>
                         </tr>
                     </table>
