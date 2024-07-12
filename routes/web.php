@@ -6,6 +6,7 @@ use App\Http\Controllers\Kantor;
 use App\Http\Controllers\LamanLabuh;
 use App\Http\Controllers\Otentikas;
 use App\Http\Controllers\Profil;
+use App\Http\Controllers\Readme;
 use App\Http\Controllers\Skills;
 use App\Http\Controllers\SPK;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,8 @@ Route::middleware('Sesi')->group(
     function () {
         Route::get('/dashboard', [SPK::class, 'Index']);
         Route::post('/dashboard', [SPK::class, 'Hitung']);
+
+        Route::get('/readme/{nama}', [Readme::class, 'Index']);
 
         Route::get('/kemampuan', [Skills::class, 'Index']);
         Route::post('/kemampuan/tambah', [Skills::class, 'Tambah']);

@@ -48,7 +48,7 @@ Profree - Programer Terbaik
             <thead>
                 <tr>
                     <th>Nama</th>
-                    <th>Nilai</th>
+                    <th>Persentase Terpilih</th>
                 </tr>
             </thead>
             <tbody class="table-border-bottom-0">
@@ -57,8 +57,8 @@ Profree - Programer Terbaik
                     foreach ($pengurutan as $item) {
                         $parts = explode('|', $item);
                         echo "<tr>";
-                        echo "<td>" . $parts[0] . "</td>";
-                        echo "<td>" . $parts[1] . "</td>";
+                        echo "<td><a href='" . url("readme/" . $parts[0]) . "'>" . $parts[0] . "</a></td>";
+                        echo "<td>" . substr($parts[1] * 100, 0, 5) . "%</td>";
                         echo "</tr>";
                     }
                 }
