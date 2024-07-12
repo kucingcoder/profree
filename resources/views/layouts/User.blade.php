@@ -18,6 +18,9 @@
       <link rel="stylesheet" href="assets/vendor/libs/apex-charts/apex-charts.css" />
       <script src="assets/vendor/js/helpers.js"></script>
       <script src="assets/js/config.js"></script>
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css">
+      <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/umd/simple-datatables.js"></script>
   </head>
 
   <?php

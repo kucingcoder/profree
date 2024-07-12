@@ -8,7 +8,7 @@ Profree - Platform
 <div class="card">
     <h5 class="card-header">Platform freelance anda</h5>
     <div class="table-responsive text-nowrap">
-        <table class="table">
+        <table id="platform" class="table table-striped">
             <thead>
                 <tr>
                     <th>Website</th>
@@ -19,9 +19,9 @@ Profree - Platform
             <tbody class="table-border-bottom-0">
                 @foreach($kantor as $item)
                 <tr>
-                    <td><strong>{{ $item->nama }}</strong></td>
-                    <td><a href="{{ $item->profil }}" target="_blank">{{ $item->profil }}</a></td>
-                    <td>
+                    <td style="vertical-align: middle;"><strong>{{ $item->nama }}</strong></td>
+                    <td style="vertical-align: middle;"><a href="{{ $item->profil }}" target="_blank">{{ $item->profil }}</a></td>
+                    <td style="vertical-align: middle;">
                         <button class="btn btn-danger" onclick="Hapus('{{ $item->id }}')"><i class="bx bx-trash">Hapus</i></button>
                     </td>
                 </tr>
@@ -67,6 +67,10 @@ Profree - Platform
 @endsection
 
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const table = new simpleDatatables.DataTable("#platform");
+    });
+
     function Hapus(id) {
         var result = confirm("Apakah anda yakin ingin menghapus ini?");
         if (result) {

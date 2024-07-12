@@ -8,7 +8,7 @@ Profree - Bahasa Komunikasi
 <div class="card">
     <h5 class="card-header">Bahasa komunikasi anda</h5>
     <div class="table-responsive text-nowrap">
-        <table class="table">
+        <table id="komunikasi" class="table table-striped">
             <thead>
                 <tr>
                     <th>Bahasa</th>
@@ -18,8 +18,8 @@ Profree - Bahasa Komunikasi
             <tbody class="table-border-bottom-0">
                 @foreach($bicara as $item)
                 <tr>
-                    <td><strong>{{ $item->bahasa }}</strong></td>
-                    <td>
+                    <td style="vertical-align: middle;"><strong>{{ $item->bahasa }}</strong></td>
+                    <td style="vertical-align: middle;">
                         <button class="btn btn-danger" onclick="Hapus('{{ $item->id }}')"><i class="bx bx-trash">Hapus</i></button>
                     </td>
                 </tr>
@@ -58,6 +58,10 @@ Profree - Bahasa Komunikasi
 @endsection
 
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const table = new simpleDatatables.DataTable("#komunikasi");
+    });
+
     function Hapus(id) {
         var result = confirm("Apakah anda yakin ingin menghapus ini?");
         if (result) {

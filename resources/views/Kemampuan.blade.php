@@ -8,7 +8,7 @@ Profree - Kemampuan
 <div class="card">
     <h5 class="card-header">Kemampuan anda</h5>
     <div class="table-responsive text-nowrap">
-        <table class="table" id="kemampuan">
+        <table class="table table-striped" id="kemampuan">
             <thead>
                 <tr>
                     <th>Produk</th>
@@ -19,9 +19,9 @@ Profree - Kemampuan
             <tbody class="table-border-bottom-0">
                 @foreach($skill as $item)
                 <tr>
-                    <td><strong>{{ $item->produk }}</strong></td>
-                    <td>{{ $item->bahasa }}</td>
-                    <td>
+                    <td style="vertical-align: middle;"><strong>{{ $item->produk }}</strong></td>
+                    <td style="vertical-align: middle;">{{ $item->bahasa }}</td>
+                    <td style="vertical-align: middle;">
                         <button class="btn btn-danger" onclick="Hapus('{{ $item->id }}')"><i class="bx bx-trash">Hapus</i></button>
                     </td>
                 </tr>
@@ -73,6 +73,10 @@ Profree - Kemampuan
 @endsection
 
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const table = new simpleDatatables.DataTable("#kemampuan");
+    });
+
     function Hapus(id) {
         var result = confirm("Apakah anda yakin ingin menghapus ini?");
         if (result) {
