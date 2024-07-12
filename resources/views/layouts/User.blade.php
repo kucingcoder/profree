@@ -16,10 +16,7 @@
       <link rel="stylesheet" href="assets/css/demo.css" />
       <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
       <link rel="stylesheet" href="assets/vendor/libs/apex-charts/apex-charts.css" />
-      <link rel="stylesheet" href="assets/css/datatables.min.css" />
       <script src="assets/vendor/js/helpers.js"></script>
-      <script src="assets/js/datatables.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
       <script src="assets/js/config.js"></script>
   </head>
 
