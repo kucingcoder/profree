@@ -8,7 +8,7 @@ Profree - Kemampuan
 <div class="card">
     <h5 class="card-header">Kemampuan anda</h5>
     <div class="table-responsive text-nowrap">
-        <table class="table">
+        <table class="table" id="kemampuan">
             <thead>
                 <tr>
                     <th>Produk</th>
@@ -73,6 +73,8 @@ Profree - Kemampuan
 @endsection
 
 <script>
+    $("#kemampuan").DataTable();
+
     function Hapus(id) {
         var result = confirm("Apakah anda yakin ingin menghapus ini?");
         if (result) {
