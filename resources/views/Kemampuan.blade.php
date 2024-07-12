@@ -73,8 +73,6 @@ Profree - Kemampuan
 @endsection
 
 <script>
-    $("#kemampuan").DataTable();
-
     function Hapus(id) {
         var result = confirm("Apakah anda yakin ingin menghapus ini?");
         if (result) {
