@@ -55,7 +55,7 @@ class Otentikas extends Controller
     {
         $pengguna = Pengguna::where("email", "=", $request->email)->first();
 
-        if ($pengguna) {
+        if ($pengguna && $pengguna->sandi == md5($request->sandi)) {
             if ($pengguna->status_akun_id == 1) {
                 return view("AkunTidakAktif", ["email" => $request->email]);
             } else {
