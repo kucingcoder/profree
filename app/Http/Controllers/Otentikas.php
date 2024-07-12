@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Mail\EmailAktivasi;
+use App\Mail\EmailLupaSandi;
 use App\Models\KonfirmasiEmail;
+use App\Models\LupaSandi;
 use App\Models\Pengguna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -158,11 +160,46 @@ class Otentikas extends Controller
         return redirect("/masuk");
     }
 
-    public function LupaSandi($Email)
+    public function KirimLupaSandi(Request $request)
     {
+        $pengguna = Pengguna::where("email", "=", $request->email)->first();
+
+        if ($pengguna) {
+            $lupa = new LupaSandi;
+            $code = md5(date('Y-m-d H:i:s'));
+
+            $lupa->pengguna_id = $pengguna->id;
+            $lupa->code = $code;
+            $lupa->save();
+
+            Mail::to($request->email)->send(new EmailLupaSandi($code));
+
+            return redirect()->back()->with("berhasil-email", "Email atur ulang sandi terkirim");
+        } else {
+            return redirect()->back()->withInput()->withErrors(["gagal-email" => "Email tidak terdaftar",]);
+        }
     }
 
-    public function AturUlangSandi(Request $request)
+    public function AturUlangSandi($Kode)
     {
+        $lupa = LupaSandi::where("code", $Kode)->first();
+        if ($lupa) {
+            return view("AturUlangSandi", ["id" => $lupa->pengguna_id]);
+        } else {
+            abort(404);
+        }
+    }
+
+    public function GantiSandi(Request $request)
+    {
+        if ($request->sandi != $request->konfirmasi_sandi) {
+            return redirect()->back()->withInput()->withErrors(["gagal-sandi" => "Sandi dan konfirmasi sandi berbeda",]);
+        }
+
+        $pengguna = Pengguna::where("id", "=", $request->id)->first();
+        $pengguna->sandi = md5($request->sandi);
+        $pengguna->save();
+
+        return redirect()->back()->with("berhasil-sandi", "Sandi berhasil diperbaharui");
     }
 }

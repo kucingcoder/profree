@@ -29,10 +29,10 @@ Route::middleware('NonSesi')->group(
 
         Route::get('/konfirmasi-email/{Kode}', [Otentikas::class, 'KonfirmasiEmail']);
 
-        Route::view('/lupa-sandi', '');
-        Route::get('/lupa-sandi/{Kode}', [Otentikas::class, 'LupaSandi']);
-
-        Route::post('/atur-ulang-sandi', [Otentikas::class, 'AturUlangSandi']);
+        Route::view('/lupa-sandi', 'LupaSandi');
+        Route::post('/lupa-sandi', [Otentikas::class, 'KirimLupaSandi']);
+        Route::get('/atur-ulang-sandi/{Kode}', [Otentikas::class, 'AturUlangSandi']);
+        Route::post('/ganti-sandi', [Otentikas::class, 'GantiSandi']);
     }
 );
 
